@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "code-style": {
+      "source": "dengyusys/skills",
+      "sourceType": "github",
+      "skillPath": "skills/code-style/SKILL.md",
+      "computedHash": "a88922db0e37f16ac78b6882593cd949a657fac997dca0a233792ec10cd51f7e"
+    }
+  }
+}

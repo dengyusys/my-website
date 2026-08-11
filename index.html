@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="一名前端工程师的个人空间，记录 Web 开发、AI Agent、Electron 与 Android / iOS 移动应用的实践和思考。"
+  >
+  <meta name="color-scheme" content="light dark">
+
+  <title>前端工程师 · AI 与跨端应用探索</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles.css">
+  <script>
+    (() => {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', saved ? saved === 'dark' : prefersDark);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <span class="signature" aria-hidden="true">dy<span>.</span></span>
+    <button class="theme-toggle" type="button" aria-label="切换深浅色主题">
+      <span aria-hidden="true">☼</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero reveal">
+      <p class="lede">
+        目前专注于 <span class="lede-tech">AI Agent</span>、<span class="lede-tech">Electron</span>
+        与 <span class="lede-tech">Android / iOS</span> 应用开发，
+        <span class="lede-focus">持续探索更自然的人机交互方式。</span>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Deng Yu</p>
+    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">赣ICP备2026018726号-1</a>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
