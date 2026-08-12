@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/code-style/SKILL.md",
       "computedHash": "a88922db0e37f16ac78b6882593cd949a657fac997dca0a233792ec10cd51f7e"
+    },
+    "write-git-commit-message": {
+      "source": "dengyusys/skills",
+      "sourceType": "github",
+      "skillPath": "skills/write-git-commit-message/SKILL.md",
+      "computedHash": "6e41afb220ab3a6c42e4ac6d37bf740b334c1934adcf2f96684d24916c3c534c"
     }
   }
 }
