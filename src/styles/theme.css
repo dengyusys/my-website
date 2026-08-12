@@ -1,0 +1,17 @@
+:root {
+  --bg: #f7f6f1;
+  --text: #252722;
+  --muted: #686b64;
+  --line: #dcdcd3;
+  --accent: #1f805c;
+  --accent-soft: #ccebdc;
+}
+
+html.dark {
+  --bg: #171916;
+  --text: #e9e9e2;
+  --muted: #a0a49a;
+  --line: #353931;
+  --accent: #72c9a2;
+  --accent-soft: #274d3c;
+}

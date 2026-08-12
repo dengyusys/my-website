@@ -1,0 +1,232 @@
+html {
+  background: var(--bg);
+}
+
+/* 纵向撑满视口，让主体占据剩余空间并将页脚稳定推至页面底部。 */
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  transition: background .25s ease, color .25s ease;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* 固定页头不拦截页面点击，仅主题按钮恢复指针事件。 */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 34px;
+  pointer-events: none;
+}
+
+.signature {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -3px;
+  transform: rotate(-7deg);
+}
+
+.signature span {
+  color: var(--accent);
+}
+
+.theme-toggle {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.theme-toggle:active {
+  transform: scale(.94);
+}
+
+/* 主体内容 */
+main {
+  width: min(100% - 48px, 760px);
+  margin: 0 auto;
+  display: flex;
+  flex: 1;
+}
+
+.hero {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px 0 52px;
+}
+
+.lede {
+  position: relative;
+  max-width: 740px;
+  margin: 0;
+  padding-top: 38px;
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: clamp(32px, 5vw, 50px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -.04em;
+}
+
+.lede::before {
+  content: "CURRENTLY FOCUSED";
+  position: absolute;
+  top: 0;
+  left: 2px;
+  color: var(--accent);
+  font: 600 11px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .18em;
+}
+
+.lede-tech {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  color: var(--accent);
+  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.045em;
+}
+
+/* 强调线置于文字下层，保留文字本身的清晰度。 */
+.lede-tech::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -2px;
+  right: -2px;
+  bottom: .14em;
+  height: .18em;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  transform: rotate(-1deg);
+}
+
+.lede-focus {
+  display: block;
+  max-width: 650px;
+  margin-top: 24px;
+  padding-left: 22px;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  font-size: .54em;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: -.02em;
+}
+
+/* 页脚 */
+footer {
+  width: min(100% - 48px, 1100px);
+  margin: 0 auto;
+  padding: 26px 0 34px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 11px ui-monospace, monospace;
+}
+
+footer p,
+footer a {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 首屏内容进入动画 */
+.reveal {
+  animation: reveal .72s cubic-bezier(.2, .75, .2, 1) both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+/* 窄屏收紧横向留白，并允许页脚内容自然换行。 */
+@media (max-width: 680px) {
+  .site-header {
+    padding: 18px 20px;
+  }
+
+  main {
+    width: min(100% - 40px, 760px);
+  }
+
+  .hero {
+    padding: 88px 0 42px;
+  }
+
+  .lede {
+    padding-top: 32px;
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.55;
+  }
+
+  .lede-focus {
+    margin-top: 20px;
+    padding-left: 16px;
+    font-size: .58em;
+  }
+
+  footer {
+    width: min(100% - 40px, 1100px);
+    flex-wrap: wrap;
+  }
+}
+
+/* 低高度视口压缩纵向间距，避免核心内容被首屏裁切。 */
+@media (max-height: 620px) {
+  .hero {
+    padding: 76px 0 30px;
+  }
+
+  .lede {
+    font-size: clamp(30px, 6vw, 46px);
+  }
+
+  footer {
+    padding: 16px 0 18px;
+  }
+}
+
+/* 尊重系统的减少动态效果设置，保留状态切换但近乎立即完成。 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
