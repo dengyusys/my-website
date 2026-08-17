@@ -1,3 +1,4 @@
+/* 主题令牌：亮色为默认值，html.dark 下整体切换为暗色值。 */
 :root {
   --bg: #f7f6f1;
   --text: #252722;
@@ -5,6 +6,10 @@
   --line: #dcdcd3;
   --accent: #1f805c;
   --accent-soft: #ccebdc;
+
+  --font-sans: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 html.dark {

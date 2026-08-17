@@ -1,24 +1,3 @@
-html {
-  background: var(--bg);
-}
-
-/* 纵向撑满视口，让主体占据剩余空间并将页脚稳定推至页面底部。 */
-body {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
-  transition: background .25s ease, color .25s ease;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-}
-
 /* 固定页头不拦截页面点击，仅主题按钮恢复指针事件。 */
 .site-header {
   position: fixed;
@@ -54,7 +33,10 @@ button:focus-visible {
   background: var(--bg);
   pointer-events: auto;
   cursor: pointer;
-  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .theme-toggle:hover {
@@ -63,11 +45,11 @@ button:focus-visible {
 }
 
 .theme-toggle:active {
-  transform: scale(.94);
+  transform: scale(0.94);
 }
 
 /* 主体内容 */
-main {
+.site-main {
   width: min(100% - 48px, 760px);
   margin: 0 auto;
   display: flex;
@@ -87,11 +69,11 @@ main {
   max-width: 740px;
   margin: 0;
   padding-top: 38px;
-  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-family: var(--font-serif);
   font-size: clamp(32px, 5vw, 50px);
   font-weight: 500;
   line-height: 1.55;
-  letter-spacing: -.04em;
+  letter-spacing: -0.04em;
 }
 
 .lede::before {
@@ -100,8 +82,8 @@ main {
   top: 0;
   left: 2px;
   color: var(--accent);
-  font: 600 11px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
-  letter-spacing: .18em;
+  font: 600 11px/1 var(--font-mono);
+  letter-spacing: 0.18em;
 }
 
 .lede-tech {
@@ -109,9 +91,9 @@ main {
   display: inline-block;
   z-index: 0;
   color: var(--accent);
-  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
-  letter-spacing: -.045em;
+  letter-spacing: -0.045em;
 }
 
 /* 强调线置于文字下层，保留文字本身的清晰度。 */
@@ -121,8 +103,8 @@ main {
   z-index: -1;
   left: -2px;
   right: -2px;
-  bottom: .14em;
-  height: .18em;
+  bottom: 0.14em;
+  height: 0.18em;
   border-radius: 999px;
   background: var(--accent-soft);
   transform: rotate(-1deg);
@@ -135,15 +117,15 @@ main {
   padding-left: 22px;
   border-left: 2px solid var(--accent);
   color: var(--muted);
-  font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
-  font-size: .54em;
+  font-family: var(--font-sans);
+  font-size: 0.54em;
   font-weight: 400;
   line-height: 1.75;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
 }
 
 /* 页脚 */
-footer {
+.site-footer {
   width: min(100% - 48px, 1100px);
   margin: 0 auto;
   padding: 26px 0 34px;
@@ -153,18 +135,26 @@ footer {
   gap: 18px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font: 11px ui-monospace, monospace;
+  font-family: var(--font-mono);
+  font-size: 11px;
 }
 
-footer p,
-footer a {
+.site-footer p,
+.site-footer a {
   margin: 0;
   line-height: 1.5;
 }
 
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
 /* 首屏内容进入动画 */
 .reveal {
-  animation: reveal .72s cubic-bezier(.2, .75, .2, 1) both;
+  animation: reveal 0.72s cubic-bezier(0.2, 0.75, 0.2, 1) both;
 }
 
 @keyframes reveal {
@@ -180,7 +170,7 @@ footer a {
     padding: 18px 20px;
   }
 
-  main {
+  .site-main {
     width: min(100% - 40px, 760px);
   }
 
@@ -197,10 +187,10 @@ footer a {
   .lede-focus {
     margin-top: 20px;
     padding-left: 16px;
-    font-size: .58em;
+    font-size: 0.58em;
   }
 
-  footer {
+  .site-footer {
     width: min(100% - 40px, 1100px);
     flex-wrap: wrap;
   }
@@ -216,17 +206,7 @@ footer a {
     font-size: clamp(30px, 6vw, 46px);
   }
 
-  footer {
+  .site-footer {
     padding: 16px 0 18px;
-  }
-}
-
-/* 尊重系统的减少动态效果设置，保留状态切换但近乎立即完成。 */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
   }
 }
